@@ -1,0 +1,23 @@
+<div ng-repeat="stock in stocks"  ng-init="stock.show=show; padding=level * 20+'px'; classname=classname + '_' + stock.id" ng-hide="show == false">
+    <div class="row tree_{{level}}" id="{{classname}}" ng-click="stock.show=!stock.show;choose(classname)">
+        <div class="span6">
+            <p style="padding-left:{{padding}}">
+                <i ng-class="{false:'icon-chevron-right', 'true':'icon-chevron-down'}[stock.show == true]"></i>
+                <a href="#" ng-click="view(stock)">{{stock.date}}</a>
+            </p>
+        </div>
+        <div class="span1" ng-class="{true:'txtalert', false:''}[stock.nb_tubes <= 3]">
+            {{stock.nb_tubes}} tubes
+        </div>
+        <div class="span1">
+           {{stock.trypsine_passes}}
+        </div>
+        <div class="span2">
+           {{stock.last_mra_treatment.status}} <small ng-show="stock.last_mra_treatment.date">({{stock.last_mra_treatment.date}})</small>
+        </div>
+        <div class="span2">
+           {{stock.comment}}
+        </div>
+    </div>
+    <stockstree stocks="stock.childs" level="level + 1" classname="classname" show="stock.show"></stockstree>
+</div>

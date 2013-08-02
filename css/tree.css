@@ -1,0 +1,11 @@
+.selected {
+    background : #C4D9E4 !important;
+}
+
+.child_selected {
+    background : #EAF2F7 !important;
+}
+
+.txtalert{
+    color : red;
+}
